@@ -96,6 +96,7 @@ public class Level_02_Apply_BasePage_III extends BasePage {
 		sendKeyToElement(driver, "//input[@id='Password']", "123456");
 		sendKeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
 		
+		waitForElementClickable(driver, "//button[@id='register-button']");
 		clickToElement(driver, "//button[@id='register-button']");
 		Assert.assertEquals(getElementText(driver, "//div[contains(@class,'message-error')]//li"), "The specified email already exists");
 	}

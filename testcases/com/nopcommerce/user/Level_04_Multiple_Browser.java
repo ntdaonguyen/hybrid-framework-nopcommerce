@@ -28,7 +28,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		
-		getBrowserName(browserName);
+		driver = getBrowserName(browserName);
 		
 		homePage = new HomePageObject(driver);
 		
@@ -166,7 +166,7 @@ public class Level_04_Multiple_Browser extends BaseTest {
   
 	public int randomNumber() {
 		Random random = new Random();
-		int randomNum = random.nextInt();
+		int randomNum = random.nextInt(99999);
 		return randomNum;
 	}
 	

@@ -13,9 +13,10 @@ public class RegisterPageObject extends BasePage {
 		this.driver = driver;
 	}
 	
-	public void clickToRegisterButton() {
+	public RegisterPageObject clickToRegisterButton() {
 		waitForElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
 		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
+		return PageGeneratorManager.getRegisterPage(driver);
 	}
 	
 	public String getErrorMessageAtFirstnameTextbox() {

@@ -13,11 +13,11 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 import commons.BaseTest;
-import pageFactory.HomePageObject;
-import pageFactory.LoginPageObject;
-import pageFactory.RegisterPageObject;
+import pageObjects.HomePageObject;
+import pageObjects.LoginPageObject;
+import pageObjects.RegisterPageObject;
 
-public class Level_05_Page_Factory extends BaseTest {
+public class Level_06_Page_Generator_Mananger_I extends BaseTest {
 	String osName = System.getProperty("os.name");
 	private WebDriver driver;
 	private String firstName, lastName, correctPassword,incorrectPassword, existingEmail, invalidEmail, notFoundEmail;

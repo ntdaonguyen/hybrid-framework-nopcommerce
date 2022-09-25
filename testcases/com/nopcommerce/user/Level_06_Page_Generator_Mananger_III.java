@@ -13,11 +13,13 @@ import org.testng.annotations.Test;
 
 import commons.BasePage;
 import commons.BaseTest;
-import pageFactory.HomePageObject;
-import pageFactory.LoginPageObject;
-import pageFactory.RegisterPageObject;
+import pageObjects.HomePageObject;
+import pageObjects.LoginPageObject;
+import pageObjects.MyAccountPageObject;
+import pageObjects.PageGeneratorManager;
+import pageObjects.RegisterPageObject;
 
-public class Level_05_Page_Factory extends BaseTest {
+public class Level_06_Page_Generator_Mananger_III extends BaseTest {
 	String osName = System.getProperty("os.name");
 	private WebDriver driver;
 	private String firstName, lastName, correctPassword,incorrectPassword, existingEmail, invalidEmail, notFoundEmail;
@@ -25,13 +27,14 @@ public class Level_05_Page_Factory extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
-	private String projectPath = System.getProperty("user.dir");
-
+	private MyAccountPageObject myAccountPage;
+	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserName(browserName);
 		
+		homePage = PageGeneratorManager.getHomePage(driver);
 		homePage = new HomePageObject(driver);
 		
 		firstName = "Nguyen";
@@ -43,8 +46,8 @@ public class Level_05_Page_Factory extends BaseTest {
 		notFoundEmail  = "nguyenntd" + randomNumber() + "@hotmail.com";
 		
 		System.out.println("Pre-condition - Step 01: Click to Register link");
-		homePage.clickToRegisterLink();
-		registerPage = new RegisterPageObject(driver);
+		
+		registerPage = homePage.clickToRegisterLink();
 		
 		System.out.println("Pre-condition - Step 02: Input to required fields");
 		registerPage.inputToFirstnameTextbox(firstName);
@@ -67,16 +70,14 @@ public class Level_05_Page_Factory extends BaseTest {
 	
 	@Test
 	public void Login_01_Empty_Data() {
-		loginPage = new LoginPageObject(driver);
-		homePage.clickToLoginLink();
+		loginPage =	homePage.clickToLoginLink();
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
 	}
   
 	@Test
 	public void Login_02_Invalid_Email() {
-		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Wrong email");
@@ -84,8 +85,7 @@ public class Level_05_Page_Factory extends BaseTest {
 
 	@Test
 	public void Login_03_Email_Not_Found() {
-		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(notFoundEmail);
 		loginPage.clickToLoginButton();
 		Assert.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
@@ -93,8 +93,7 @@ public class Level_05_Page_Factory extends BaseTest {
   
 	@Test
 	public void Login_04_Existing_Email_Empty_Password() {
-		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("");
 		loginPage.clickToLoginButton();
@@ -103,8 +102,7 @@ public class Level_05_Page_Factory extends BaseTest {
   
 	@Test
 	public void Login_04_Existing_Email_Incorrect_Password() {
-		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(incorrectPassword);
 		loginPage.clickToLoginButton();
@@ -113,14 +111,13 @@ public class Level_05_Page_Factory extends BaseTest {
   
 	@Test
 	public void Login_06_Valid_Email_Password() {
-		homePage.clickToLoginLink();
-		loginPage = new LoginPageObject(driver);
+		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(correctPassword);
-		loginPage.clickToLoginButton();
-		homePage = new HomePageObject(driver);
+		homePage = loginPage.clickToLoginButton();
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
-		homePage.clickToMyAccountLink();
+		myAccountPage = homePage.clickToMyAccountLink();
+		myAccountPage.clickToNewsletterCheckbox();
 	}
   
 	public int randomNumber() {

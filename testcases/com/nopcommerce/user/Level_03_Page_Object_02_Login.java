@@ -51,6 +51,7 @@ public class Level_03_Page_Object_02_Login extends BasePage {
 		
 		System.out.println("Pre-condition - Step 01: Click to Register link");
 		homePage.clickToRegisterLink();
+		registerPage = new RegisterPageObject(driver);
 		
 		System.out.println("Pre-condition - Step 02: Input to required fields");
 		registerPage.inputToFirstnameTextbox(firstName);

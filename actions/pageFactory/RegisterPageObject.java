@@ -9,7 +9,7 @@ import commons.BasePageFactory;
 import pageUIs.RegisterPageUI;
 
 public class RegisterPageObject extends BasePageFactory {
-	public WebDriver driver;
+	private WebDriver driver;
 
 	public RegisterPageObject(WebDriver driver) {
 		this.driver = driver;
@@ -17,46 +17,46 @@ public class RegisterPageObject extends BasePageFactory {
 	}
 	
 	@FindBy(id = "FirstName")
-	public WebElement firstNameTextbox;
+	private WebElement firstNameTextbox;
 
 	@FindBy(id = "LastName")
-	public WebElement lastNameTextbox;
+	private WebElement lastNameTextbox;
 	
 	@FindBy(id = "Email")
-	public WebElement emailTextbox;
+	private WebElement emailTextbox;
 	
 	@FindBy(id = "Password")
-	public WebElement passwordTextbox;
+	private WebElement passwordTextbox;
 	
 	@FindBy(id = "ConfirmPassword")
-	public WebElement confirmPasswordTextbox;
+	private WebElement confirmPasswordTextbox;
 	
 	@FindBy(id = "register-button")
-	public WebElement registerButton;
+	private WebElement registerButton;
 	
 	@FindBy(id = "FirstName-error")
-	public WebElement firstNameErrorMessage;
+	private WebElement firstNameErrorMessage;
 	
 	@FindBy(id = "LastName-error")
-	public WebElement lastNameErrorMessage;
+	private WebElement lastNameErrorMessage;
 	
 	@FindBy(id = "Email-error")
-	public WebElement emailErrorMessage;
+	private WebElement emailErrorMessage;
 	
 	@FindBy(id = "Password-error")
-	public WebElement passwordErrorMessage;
+	private WebElement passwordErrorMessage;
 	
 	@FindBy(id = "ConfirmPassword-error")
-	public WebElement confirmPasswordErrorMessage;
+	private WebElement confirmPasswordErrorMessage;
 	
 	@FindBy(xpath = "//div[@class='result']")
-	public WebElement registerSuccessMessage;
+	private WebElement registerSuccessMessage;
 	
 	@FindBy(xpath = "//a[@class='ico-logout']")
-	public WebElement logoutLink;
+	private WebElement logoutLink;
 	
 	@FindBy(xpath = "//div[contains(@class,'message-error')]//li")
-	public WebElement existingEmailErrorMessage;
+	private WebElement existingEmailErrorMessage;
 
 	public void clickToRegisterButton() {
 		waitForElementClickable(driver, registerButton);
@@ -74,18 +74,18 @@ public class RegisterPageObject extends BasePageFactory {
 	}
 
 	public String getErrorMessageAtEmailTextbox() {
-		waitForElementVisible(driver, emailTextbox);
-		return getElementText(driver, emailTextbox);
+		waitForElementVisible(driver, emailErrorMessage);
+		return getElementText(driver, emailErrorMessage);
 	}
 	
 	public String getErrorMessageAtPasswordTextbox() {
-		waitForElementVisible(driver, passwordTextbox);
-		return getElementText(driver, passwordTextbox);
+		waitForElementVisible(driver, passwordErrorMessage);
+		return getElementText(driver, passwordErrorMessage);
 	}
 
 	public String getErrorMessageAtConfirmPasswordTextbox() {
-		waitForElementVisible(driver, confirmPasswordTextbox);
-		return getElementText(driver, confirmPasswordTextbox);
+		waitForElementVisible(driver, confirmPasswordErrorMessage);
+		return getElementText(driver, confirmPasswordErrorMessage);
 	}
 
 	public void inputToFirstnameTextbox(String firstName) {

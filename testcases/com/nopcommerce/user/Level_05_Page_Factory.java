@@ -43,24 +43,25 @@ public class Level_05_Page_Factory extends BaseTest {
 		invalidEmail = "nguyenntd@hotmail@net";
 		notFoundEmail  = "nguyenntd" + randomNumber() + "@hotmail.com";
 		
-//		System.out.println("Pre-condition - Step 01: Click to Register link");
-//		homePage.clickToRegisterLink();
-//		
-//		System.out.println("Pre-condition - Step 02: Input to required fields");
-//		registerPage.inputToFirstnameTextbox(firstName);
-//		registerPage.inputToLastnameTextbox(lastName);
-//		registerPage.inputToEmailTextbox(existingEmail);
-//		registerPage.inputToPasswordTextbox(correctPassword);
-//		registerPage.inputToConfirmPasswordTextbox(correctPassword);
-//		
-//		System.out.println("Pre-condition - Step 03: Click to Register button");
-//		registerPage.clickToRegisterButton();
-//		
-//		System.out.println("Pre-condition - Step 04: Verify success message displayed");
-//		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-//
-//		System.out.println("Pre-condition - Step 05: Click to Log out link");
-//		registerPage.clickToLogoutLink();
+		System.out.println("Pre-condition - Step 01: Click to Register link");
+		homePage.clickToRegisterLink();
+		registerPage = new RegisterPageObject(driver);
+		
+		System.out.println("Pre-condition - Step 02: Input to required fields");
+		registerPage.inputToFirstnameTextbox(firstName);
+		registerPage.inputToLastnameTextbox(lastName);
+		registerPage.inputToEmailTextbox(existingEmail);
+		registerPage.inputToPasswordTextbox(correctPassword);
+		registerPage.inputToConfirmPasswordTextbox(correctPassword);
+		
+		System.out.println("Pre-condition - Step 03: Click to Register button");
+		registerPage.clickToRegisterButton();
+		
+		System.out.println("Pre-condition - Step 04: Verify success message displayed");
+		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+
+		System.out.println("Pre-condition - Step 05: Click to Log out link");
+		registerPage.clickToLogoutLink();
 		
 		homePage = new HomePageObject(driver);
 	}

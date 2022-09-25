@@ -22,7 +22,7 @@ public class HomePageObject extends BasePageFactory {
 	@FindBy(xpath = "//a[@class='ico-login']")
 	private WebElement loginLink;
 	
-	@FindBy(css = "//a[@class='ico-account']")
+	@FindBy(css = "a[class='ico-account']")
 	private WebElement myAccountLink;
 	
 	public void clickToRegisterLink() {

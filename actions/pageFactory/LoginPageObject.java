@@ -25,7 +25,7 @@ public class LoginPageObject extends BasePageFactory {
 	@FindBy(xpath = "//button[contains(@class, 'login-button')]")
 	private WebElement loginButton;
 	
-	@FindBy(xpath = "//span[@id='Email-error']")
+	@FindBy(id = "Email-error")
 	private WebElement emailErrorMessage;
 	
 	@FindBy(xpath = "//div[contains(@class,'validation-summary-errors')]")

@@ -15,11 +15,11 @@ import commons.BasePage;
 import commons.BaseTest;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
-import pageObjects.MyAccountPageObject;
+import pageObjects.CustomerInfoPageObject;
 import pageObjects.PageGeneratorManager;
 import pageObjects.RegisterPageObject;
 
-public class Level_06_Page_Generator_Mananger_III extends BaseTest {
+public class Level_06_Page_Generator_Manager_III extends BaseTest {
 	String osName = System.getProperty("os.name");
 	private WebDriver driver;
 	private String firstName, lastName, correctPassword,incorrectPassword, existingEmail, invalidEmail, notFoundEmail;
@@ -27,7 +27,7 @@ public class Level_06_Page_Generator_Mananger_III extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
-	private MyAccountPageObject myAccountPage;
+	private CustomerInfoPageObject myAccountPage;
 	
 	@Parameters("browser")
 	@BeforeClass
@@ -63,9 +63,7 @@ public class Level_06_Page_Generator_Mananger_III extends BaseTest {
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
 		System.out.println("Pre-condition - Step 05: Click to Log out link");
-		registerPage.clickToLogoutLink();
-		
-		homePage = new HomePageObject(driver);
+		registerPage.clickToLogoutLink();		
 	}
 	
 	@Test
@@ -101,7 +99,7 @@ public class Level_06_Page_Generator_Mananger_III extends BaseTest {
 	}
   
 	@Test
-	public void Login_04_Existing_Email_Incorrect_Password() {
+	public void Login_05_Existing_Email_Incorrect_Password() {
 		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(incorrectPassword);

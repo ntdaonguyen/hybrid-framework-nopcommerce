@@ -27,7 +27,7 @@ public class PageGeneratorManager {
 		return new UserMyProductReviewPageObject(driver);
 	}
 	
-	public static UserRewardPointPageObject getRewardPointPage (WebDriver driver) {
+	public static UserRewardPointPageObject getUserRewardPointPage (WebDriver driver) {
 		return new UserRewardPointPageObject(driver);
 	}
 	

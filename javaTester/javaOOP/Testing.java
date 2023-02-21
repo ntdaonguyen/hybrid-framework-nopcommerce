@@ -20,6 +20,12 @@ public class Testing {
 		
 		// Declare classes
 		Topic_04_Non_Access_Modifier.sendKeyToElement("Hello");
+		
+		Topic_06_Getter_Setter topic = new Topic_06_Getter_Setter();
+		topic.personName = "Ganyu";
+		topic.personAge = 0;
+		topic.showPersonInfo();
+		
 	}
 	
 	// Nested class

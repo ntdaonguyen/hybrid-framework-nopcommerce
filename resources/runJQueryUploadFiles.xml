@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="JQuery Upload Files">
+  
+  <parameter name="url" value="https://blueimp.github.io/jQuery-File-Upload/" />
+    
+  <test name="Run on Firefox">
+  	<parameter name="browser" value="firefox" />
+    <classes>
+      <class name="com.jquery.Level_11_Upload_Files" />
+    </classes>
+  </test>
+  
+</suite>

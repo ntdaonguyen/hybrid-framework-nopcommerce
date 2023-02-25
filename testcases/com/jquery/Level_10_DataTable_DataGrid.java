@@ -2,6 +2,9 @@
 
 package com.jquery;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.List;
 import java.util.Random;
 
@@ -35,19 +38,19 @@ public class Level_10_DataTable_DataGrid extends BaseTest {
 	public void Table_01_Paging() {		
 		homePage.openPagingByPageNumber("10");
 		homePage.sleepInSecond(1);
-		Assert.assertTrue(homePage.isPageNumberActived("10"));
+		AssertJUnit.assertTrue(homePage.isPageNumberActived("10"));
 		
 		homePage.openPagingByPageNumber("20");
 		homePage.sleepInSecond(1);
-		Assert.assertTrue(homePage.isPageNumberActived("20"));
+		AssertJUnit.assertTrue(homePage.isPageNumberActived("20"));
 
 		homePage.openPagingByPageNumber("5");
 		homePage.sleepInSecond(1);
-		Assert.assertTrue(homePage.isPageNumberActived("5"));
+		AssertJUnit.assertTrue(homePage.isPageNumberActived("5"));
 
 		homePage.openPagingByPageNumber("7");
 		homePage.sleepInSecond(1);
-		Assert.assertTrue(homePage.isPageNumberActived("7"));
+		AssertJUnit.assertTrue(homePage.isPageNumberActived("7"));
 	}
   
 	
@@ -68,7 +71,7 @@ public class Level_10_DataTable_DataGrid extends BaseTest {
 		// Read data from file country.txt
 		// Save as a List<String> = expectedAllCountryValues
 		actualAllCountryValues = homePage.getValueEachRowAtAllPage();
-		Assert.assertEquals(actualAllCountryValues, expectedAllCountryValues);
+		AssertJUnit.assertEquals(actualAllCountryValues, expectedAllCountryValues);
 	}
 	
 	@Test

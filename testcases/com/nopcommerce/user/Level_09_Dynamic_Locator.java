@@ -2,6 +2,9 @@
 
 package com.nopcommerce.user;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
@@ -57,17 +60,17 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 		registerPage.inputToPasswordTextbox(correctPassword);
 		registerPage.inputToConfirmPasswordTextbox(correctPassword);
 		registerPage.clickToRegisterButton();
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		AssertJUnit.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		registerPage.clickToLogoutLink();
 	
 		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(emailAddress);
 		loginPage.inputToPasswordTextbox(correctPassword);
 		homePage = loginPage.clickToLoginButton();
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());	
+		AssertJUnit.assertTrue(homePage.isMyAccountLinkDisplayed());	
 
 		customerInfoPage = homePage.clickToMyAccountLink();
-		Assert.assertTrue(customerInfoPage.isCustomerInfoPageDisplayed());
+		AssertJUnit.assertTrue(customerInfoPage.isCustomerInfoPageDisplayed());
 	}
   
 	@Test

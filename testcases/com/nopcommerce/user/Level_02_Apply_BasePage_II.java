@@ -1,5 +1,9 @@
 package com.nopcommerce.user;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import commons.BasePage;
@@ -45,11 +49,11 @@ public class Level_02_Apply_BasePage_II {
 		basePage.waitForElementClickable(driver, "//button[@id='register-button']");
 		basePage.clickToElement(driver, "//button[@id='register-button']");
 		
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='FirstName-error']"), "First name is required.");
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='LastName-error']"), "Last name is required.");
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='Email-error']"), "Email is required.");
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='Password-error']"), "Password is required.");
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='ConfirmPassword-error']"), "Password is required.");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='FirstName-error']"), "First name is required.");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='LastName-error']"), "Last name is required.");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='Email-error']"), "Email is required.");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='Password-error']"), "Password is required.");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='ConfirmPassword-error']"), "Password is required.");
 	}
   
 	@Test
@@ -65,7 +69,7 @@ public class Level_02_Apply_BasePage_II {
 
 		basePage.waitForElementClickable(driver, "//button[@id='register-button']");
 		basePage.clickToElement(driver, "//button[@id='register-button']");
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='Email-error']"), "Wrong email");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='Email-error']"), "Wrong email");
 	}
 
 	@Test
@@ -81,7 +85,7 @@ public class Level_02_Apply_BasePage_II {
 		
 		basePage.waitForElementClickable(driver, "//button[@id='register-button']");
 		basePage.clickToElement(driver, "//button[@id='register-button']");
-		Assert.assertEquals(basePage.getElementText(driver, "//div[@class='result']"), "Your registration completed");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//div[@class='result']"), "Your registration completed");
 		
 		basePage.waitForElementClickable(driver, "//a[@class='ico-logout']");
 		basePage.clickToElement(driver, "//a[@class='ico-logout']");
@@ -99,7 +103,7 @@ public class Level_02_Apply_BasePage_II {
 		basePage.sendKeyToElement(driver, "//input[@id='ConfirmPassword']", "123456");
 		
 		basePage.clickToElement(driver, "//button[@id='register-button']");
-		Assert.assertEquals(basePage.getElementText(driver, "//div[contains(@class,'message-error')]//li"), "The specified email already exists");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//div[contains(@class,'message-error')]//li"), "The specified email already exists");
 	}
   
 	@Test
@@ -116,7 +120,7 @@ public class Level_02_Apply_BasePage_II {
 		basePage.waitForElementClickable(driver, "//button[@id='register-button']");
 		basePage.clickToElement(driver, "//button[@id='register-button']");
 		
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='Password-error']"), "Password must meet the following rules:\nmust have at least 6 characters");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='Password-error']"), "Password must meet the following rules:\nmust have at least 6 characters");
 	}
   
 	@Test
@@ -133,7 +137,7 @@ public class Level_02_Apply_BasePage_II {
 		basePage.waitForElementClickable(driver, "//button[@id='register-button']");
 		basePage.clickToElement(driver, "//button[@id='register-button']");
 		
-		Assert.assertEquals(basePage.getElementText(driver, "//span[@id='ConfirmPassword-error']"), "The password and confirmation password do not match.");
+		AssertJUnit.assertEquals(basePage.getElementText(driver, "//span[@id='ConfirmPassword-error']"), "The password and confirmation password do not match.");
 	}
   
 	public int randomNumber() {

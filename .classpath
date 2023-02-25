@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="target/classes" path="src">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="src" path="javaTester"/>
 	<classpathentry kind="src" path="testcases"/>
 	<classpathentry kind="src" path="testdata"/>
 	<classpathentry kind="src" path="actions"/>
 	<classpathentry kind="src" path="interfaces"/>
-	<classpathentry kind="src" path="resources"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry excluding="**" kind="src" output="target/classes" path="resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
 		<attributes>
 			<attribute name="module" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="libraries/selenium-server-standalone-3.141.59.jar"/>
@@ -26,5 +36,9 @@
 	<classpathentry kind="lib" path="libWebDriverManager/jsoup-1.13.1.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/slf4j-api-1.7.30.jar"/>
 	<classpathentry kind="lib" path="libWebDriverManager/webdrivermanager-4.2.0.jar"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="/Users/ntdaonguyen/Downloads/poi-bin-5.2.3/poi-5.2.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/poi-5.2.3"/>
+	<classpathentry kind="lib" path="/Users/ntdaonguyen/Downloads/commons-logging-1.2/commons-logging-1.2-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/ntdaonguyen/Downloads/commons-logging-1.2/commons-logging-1.2.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -1,5 +1,9 @@
 package com.nopcommerce.user;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 
@@ -37,11 +41,11 @@ public class Level_01_Register_DRY {
 	public void TC_01_Register_Empty_Data() {
 		driver.findElement(By.cssSelector("a.ico-register")).click();
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#FirstName-error")).getText(), "First name is required.");
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#LastName-error")).getText(), "Last name is required.");
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Email is required.");
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password is required.");
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#ConfirmPassword-error")).getText(), "Password is required.");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#FirstName-error")).getText(), "First name is required.");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#LastName-error")).getText(), "Last name is required.");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Email is required.");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password is required.");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#ConfirmPassword-error")).getText(), "Password is required.");
 	}
   
 	@Test
@@ -53,7 +57,7 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123456");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Wrong email");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#Email-error")).getText(), "Wrong email");
 	}
 
 	@Test
@@ -65,7 +69,7 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123456");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		Assert.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(), "Your registration completed");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(), "Your registration completed");
 		driver.findElement(By.cssSelector("a.ico-logout")).click();
 	}
   
@@ -78,7 +82,7 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123456");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		Assert.assertEquals(driver.findElement(By.cssSelector("div.message-error li")).getText(), "The specified email already exists");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("div.message-error li")).getText(), "The specified email already exists");
 	}
   
 	@Test
@@ -90,7 +94,7 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("12345");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("12345");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password must meet the following rules:\nmust have at least 6 characters");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#Password-error")).getText(), "Password must meet the following rules:\nmust have at least 6 characters");
 	}
   
 	@Test
@@ -102,7 +106,7 @@ public class Level_01_Register_DRY {
 		driver.findElement(By.cssSelector("input#Password")).sendKeys("123456");
 		driver.findElement(By.cssSelector("input#ConfirmPassword")).sendKeys("123457");
 		driver.findElement(By.cssSelector("button#register-button")).click();
-		Assert.assertEquals(driver.findElement(By.cssSelector("span#ConfirmPassword-error")).getText(), "The password and confirmation password do not match.");
+		AssertJUnit.assertEquals(driver.findElement(By.cssSelector("span#ConfirmPassword-error")).getText(), "The password and confirmation password do not match.");
 	}
   
 	public int randomNumber() {

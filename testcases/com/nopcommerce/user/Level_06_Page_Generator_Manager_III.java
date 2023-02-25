@@ -1,5 +1,8 @@
 package com.nopcommerce.user;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -60,7 +63,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Pre-condition - Step 04: Verify success message displayed");
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		AssertJUnit.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
 		System.out.println("Pre-condition - Step 05: Click to Log out link");
 		registerPage.clickToLogoutLink();		
@@ -70,7 +73,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 	public void Login_01_Empty_Data() {
 		loginPage =	homePage.clickToLoginLink();
 		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
+		AssertJUnit.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Please enter your email");
 	}
   
 	@Test
@@ -78,7 +81,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(invalidEmail);
 		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Wrong email");
+		AssertJUnit.assertEquals(loginPage.getErrorMessageAtEmailTextbox(), "Wrong email");
 	}
 
 	@Test
@@ -86,7 +89,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(notFoundEmail);
 		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
+		AssertJUnit.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
 	}
   
 	@Test
@@ -95,7 +98,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox("");
 		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+		AssertJUnit.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 	}
   
 	@Test
@@ -104,7 +107,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(incorrectPassword);
 		loginPage.clickToLoginButton();
-		Assert.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+		AssertJUnit.assertEquals(loginPage.getErrorMessageUnsuccessful(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
 	}
   
 	@Test
@@ -113,7 +116,7 @@ public class Level_06_Page_Generator_Manager_III extends BaseTest {
 		loginPage.inputToEmailTextbox(existingEmail);
 		loginPage.inputToPasswordTextbox(correctPassword);
 		homePage = loginPage.clickToLoginButton();
-		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
+		AssertJUnit.assertTrue(homePage.isMyAccountLinkDisplayed());
 		myAccountPage = homePage.clickToMyAccountLink();
 		myAccountPage.clickToNewsletterCheckbox();
 	}

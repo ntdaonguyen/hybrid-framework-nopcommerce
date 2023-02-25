@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.nopcommerce.user.Level_08_Switch_Role"/>
+      <class name="com.nopcommerce.user.Level_05_Page_Factory"/>
+      <class name="com.nopcommerce.user.Level_07_Switch_Page"/>
+      <class name="com.nopcommerce.user.User_03_Address"/>
+      <class name="com.nopcommerce.user.Level_02_Apply_BasePage_III"/>
+      <class name="com.nopcommerce.user.User_04_Invoice"/>
+      <class name="com.nopcommerce.user.Level_09_Dynamic_Locator"/>
+      <class name="com.nopcommerce.user.Level_02_Apply_BasePage_II"/>
+      <class name="com.nopcommerce.user.Level_03_Page_Object_01_Register"/>
+      <class name="com.nopcommerce.user.User_02_MyAccount"/>
+      <class name="com.nopcommerce.user.Level_01_Register_DRY"/>
+      <class name="com.nopcommerce.user.Level_03_Page_Object_02_Login"/>
+      <class name="com.nopcommerce.user.Level_02_Apply_BasePage_I"/>
+      <class name="com.nopcommerce.user.Level_06_Page_Generator_Mananger_II"/>
+      <class name="com.nopcommerce.user.Level_06_Page_Generator_Manager_III"/>
+      <class name="com.nopcommerce.user.Level_12_Assert_Verify"/>
+      <class name="com.jquery.Level_11_Upload_Files"/>
+      <class name="com.jquery.Level_10_DataTable_DataGrid"/>
+      <class name="com.nopcommerce.user.Level_06_Page_Generator_Mananger_I"/>
+      <class name="com.nopcommerce.user.Level_04_Multiple_Browser"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

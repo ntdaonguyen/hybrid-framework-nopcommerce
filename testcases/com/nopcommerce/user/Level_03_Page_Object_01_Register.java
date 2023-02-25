@@ -1,5 +1,9 @@
 package com.nopcommerce.user;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeClass;
+import org.testng.AssertJUnit;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -55,11 +59,11 @@ public class Level_03_Page_Object_01_Register extends BasePage {
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register_01 - Step 03: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorMessageAtFirstnameTextbox(), "First name is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtLastnameTextbox(), "Last name is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Email is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(), "Password is required.");
-		Assert.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(), "Password is required.");
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtFirstnameTextbox(), "First name is required.");
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtLastnameTextbox(), "Last name is required.");
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Email is required.");
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(), "Password is required.");
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(), "Password is required.");
 	}
   
 	@Test
@@ -80,7 +84,7 @@ public class Level_03_Page_Object_01_Register extends BasePage {
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register_02 - Step 04: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Wrong email");
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtEmailTextbox(), "Wrong email");
 	}
 
 	@Test
@@ -101,7 +105,7 @@ public class Level_03_Page_Object_01_Register extends BasePage {
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register_03 - Step 04: Verify success message displayed");
-		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		AssertJUnit.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
 		System.out.println("Register_03 - Step 05: Click to Log out link");
 		registerPage.clickToLogoutLink();
@@ -125,7 +129,7 @@ public class Level_03_Page_Object_01_Register extends BasePage {
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register_04 - Step 04: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorExistingEmailMessage(), "The specified email already exists");
+		AssertJUnit.assertEquals(registerPage.getErrorExistingEmailMessage(), "The specified email already exists");
 	}
   
 	@Test
@@ -146,7 +150,7 @@ public class Level_03_Page_Object_01_Register extends BasePage {
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register_05 - Step 04: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(), "Password must meet the following rules:\nmust have at least 6 characters");
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtPasswordTextbox(), "Password must meet the following rules:\nmust have at least 6 characters");
 	}
   
 	@Test
@@ -167,7 +171,7 @@ public class Level_03_Page_Object_01_Register extends BasePage {
 		registerPage.clickToRegisterButton();
 		
 		System.out.println("Register_06 - Step 04: Verify error message displayed");
-		Assert.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(), "The password and confirmation password do not match.");		
+		AssertJUnit.assertEquals(registerPage.getErrorMessageAtConfirmPasswordTextbox(), "The password and confirmation password do not match.");		
 	}
   
 	public int randomNumber() {

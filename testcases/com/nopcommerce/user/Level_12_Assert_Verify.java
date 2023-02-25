@@ -4,7 +4,6 @@ package com.nopcommerce.user;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-import org.testng.AssertJUnit;
 import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
@@ -24,7 +23,7 @@ import pageObjects.nopCommerce.user.PageGeneratorManager;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 import pageObjects.nopCommerce.user.UserRewardPointPageObject;
 
-public class Level_07_Switch_Page extends BaseTest {
+public class Level_12_Assert_Verify extends BaseTest {
 	String osName = System.getProperty("os.name");
 	private WebDriver driver;
 	private String firstName, lastName, correctPassword, emailAddress;
@@ -52,7 +51,7 @@ public class Level_07_Switch_Page extends BaseTest {
 	}
 
 	@Test
-	public void User_01_Register() {		
+	public void User_01_Register_Login() {		
 		registerPage = homePage.clickToRegisterLink();
 		registerPage.inputToFirstnameTextbox(firstName);
 		registerPage.inputToLastnameTextbox(lastName);
@@ -60,38 +59,19 @@ public class Level_07_Switch_Page extends BaseTest {
 		registerPage.inputToPasswordTextbox(correctPassword);
 		registerPage.inputToConfirmPasswordTextbox(correctPassword);
 		registerPage.clickToRegisterButton();
-		AssertJUnit.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
+		verifyEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 		registerPage.clickToLogoutLink();
-	}
-  
-	@Test
-	public void User_02_Login() {
+	
 		loginPage =	homePage.clickToLoginLink();
 		loginPage.inputToEmailTextbox(emailAddress);
 		loginPage.inputToPasswordTextbox(correctPassword);
 		homePage = loginPage.clickToLoginButton();
-		AssertJUnit.assertTrue(homePage.isMyAccountLinkDisplayed());	
-	}
+		verifyTrue(homePage.isMyAccountLinkDisplayed());	
 
-	@Test
-	public void User_03_Customer_Info() {
 		customerInfoPage = homePage.clickToMyAccountLink();
-		AssertJUnit.assertTrue(customerInfoPage.isCustomerInfoPageDisplayed());
+		verifyTrue(customerInfoPage.isCustomerInfoPageDisplayed());
 	}
   
-	@Test
-	public void User_04_Switch_Page() {
-		addressPage = customerInfoPage.openAddressPage(driver);
-		myProductReviewPage = addressPage.openMyProductReviewPage(driver);
-		rewardPointPage = myProductReviewPage.openRewardPointPage(driver);
-		addressPage = rewardPointPage.openAddressPage(driver);
-		rewardPointPage = addressPage.openRewardPointPage(driver);
-		myProductReviewPage = rewardPointPage.openMyProductReviewPage(driver);
-		addressPage = myProductReviewPage.openAddressPage(driver);
-		customerInfoPage = addressPage.openCustomerInfoPage(driver);
-		myProductReviewPage = customerInfoPage.openMyProductReviewPage(driver);
-	}
-	
 	public int randomNumber() {
 		Random random = new Random();
 		int randomNum = random.nextInt();

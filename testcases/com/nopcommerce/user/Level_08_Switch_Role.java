@@ -2,6 +2,9 @@
 
 package com.nopcommerce.user;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -57,7 +60,7 @@ public class Level_08_Switch_Role extends BaseTest {
 		
 		// Login as User role
 		userHomePage = userLoginPage.loginAsUser(userEmailAddress, userPassword);
-		Assert.assertTrue(userHomePage.isMyAccountLinkDisplayed());
+		AssertJUnit.assertTrue(userHomePage.isMyAccountLinkDisplayed());
 				
 		// Home Page -> Customer Info
 		userCustomerInfoPage = userHomePage.openMyAccountPage();
@@ -71,7 +74,7 @@ public class Level_08_Switch_Role extends BaseTest {
 		
 		// Login as Admin role
 		adminDashboardPage = adminLoginPage.loginAsAdmin(adminEmailAddress, adminPassword);
-		Assert.assertTrue(adminDashboardPage.isDashboardHeaderDisplayed());
+		AssertJUnit.assertTrue(adminDashboardPage.isDashboardHeaderDisplayed());
 		
 		// Dashboard Page -> Click Logout -> Login Page (Admin)
 		adminLoginPage = adminDashboardPage.clickToLogoutLinkAtAdminPage(driver);
@@ -88,7 +91,7 @@ public class Level_08_Switch_Role extends BaseTest {
 		
 		// Login as User role
 		userHomePage = userLoginPage.loginAsUser(userEmailAddress, userPassword);
-		Assert.assertTrue(userHomePage.isMyAccountLinkDisplayed());
+		AssertJUnit.assertTrue(userHomePage.isMyAccountLinkDisplayed());
 	}
 	
 	public int randomNumber() {

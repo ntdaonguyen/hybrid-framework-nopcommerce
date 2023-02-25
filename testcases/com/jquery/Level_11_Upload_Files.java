@@ -2,6 +2,9 @@
 
 package com.jquery;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.List;
 import java.util.Random;
 
@@ -40,16 +43,16 @@ public class Level_11_Upload_Files extends BaseTest {
 		homePage.uploadMultipleFiles(driver, vietnamFileName);
 		
 		// Step 02 - Verify single file loaded success
-		Assert.assertTrue(homePage.isFileLoadedByName(vietnamFileName));
+		AssertJUnit.assertTrue(homePage.isFileLoadedByName(vietnamFileName));
 		
 		// Step 03 - Click to Start button
 		homePage.clickToStartButton();
 		
 		// Step 04 - Verify single file link uploaded success
-		Assert.assertTrue(homePage.isFileLinkUploadedByName(vietnamFileName));
+		AssertJUnit.assertTrue(homePage.isFileLinkUploadedByName(vietnamFileName));
 		
 		// Step 05 - Verify single file image uploaded success
-		Assert.assertTrue(homePage.isFileImageUploadedByName(vietnamFileName));
+		AssertJUnit.assertTrue(homePage.isFileImageUploadedByName(vietnamFileName));
 
 	}
 	
@@ -60,22 +63,22 @@ public class Level_11_Upload_Files extends BaseTest {
 		homePage.uploadMultipleFiles(driver, multipleFileNames);
 				
 		// Step 02 - Verify multiple file loaded success
-		Assert.assertTrue(homePage.isFileLoadedByName(japanFileName));
-		Assert.assertTrue(homePage.isFileLoadedByName(koreaFileName));
-		Assert.assertTrue(homePage.isFileLoadedByName(vietnamFileName));
+		AssertJUnit.assertTrue(homePage.isFileLoadedByName(japanFileName));
+		AssertJUnit.assertTrue(homePage.isFileLoadedByName(koreaFileName));
+		AssertJUnit.assertTrue(homePage.isFileLoadedByName(vietnamFileName));
 				
 		// Step 03 - Click to Start button
 		homePage.clickToStartButton();
 				
 		// Step 04 - Verify multiple file link uploaded success
-		Assert.assertTrue(homePage.isFileLinkUploadedByName(japanFileName));
-		Assert.assertTrue(homePage.isFileLinkUploadedByName(koreaFileName));
-		Assert.assertTrue(homePage.isFileLinkUploadedByName(vietnamFileName));
+		AssertJUnit.assertTrue(homePage.isFileLinkUploadedByName(japanFileName));
+		AssertJUnit.assertTrue(homePage.isFileLinkUploadedByName(koreaFileName));
+		AssertJUnit.assertTrue(homePage.isFileLinkUploadedByName(vietnamFileName));
 				
 		// Step 05 - Verify multiple file image uploaded success
-		Assert.assertTrue(homePage.isFileImageUploadedByName(japanFileName));
-		Assert.assertTrue(homePage.isFileImageUploadedByName(koreaFileName));
-		Assert.assertTrue(homePage.isFileImageUploadedByName(vietnamFileName));
+		AssertJUnit.assertTrue(homePage.isFileImageUploadedByName(japanFileName));
+		AssertJUnit.assertTrue(homePage.isFileImageUploadedByName(koreaFileName));
+		AssertJUnit.assertTrue(homePage.isFileImageUploadedByName(vietnamFileName));
 	}
 	@AfterClass
 	public void afterClass() {

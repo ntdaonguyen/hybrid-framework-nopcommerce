@@ -1,13 +1,16 @@
 package commons;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -28,9 +31,7 @@ import pageUIs.jQuery.uploadFile.BasePageJQueryUI;
 import pageUIs.nopCommerce.user.BasePageNopCommerceUI;
 
 public class BasePage {
-	
-	private long longTimeout = 30;
-	
+		
 	public static BasePage getBasePageObject() {
 		return new BasePage();
 	}
@@ -276,11 +277,53 @@ public class BasePage {
 	}
 	
 	public boolean isElementDisplayed(WebDriver driver, String locatorType) {
+		try {
 		return getWebElement(driver, locatorType).isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
+		}
 	}
 	
 	public boolean isElementDisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
-		return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
+		try {
+			return getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
+	
+	public boolean isElementUnisplayed(WebDriver driver, String locatorType) {
+		boolean status = true;
+		if(getWebElement(driver, locatorType).isDisplayed()) {
+			status = false;
+		}
+		return status;
+	}
+	
+	public boolean isElementUnisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
+		boolean status = true;
+		if(getWebElement(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed()) {
+			status = false;
+		}
+		return status;
+	}
+	
+	public void overrideImplicitTimeout(WebDriver driver, long timeOut) {
+		driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
+	}
+	
+	public boolean isElementUndisplayed(WebDriver driver, String locator) {
+		overrideImplicitTimeout(driver, shortTimeout);
+		List<WebElement> elements = getListWebElement(driver, locator);
+		overrideImplicitTimeout(driver, longTimeout);
+		
+		if(elements.size() == 0) {
+			return true;
+		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public boolean isElementEnabled(WebDriver driver, String locatorType) {
@@ -428,6 +471,17 @@ public class BasePage {
 		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
 	}
 	
+	/*
+	 * Wait for element undisplayed in DOM or not in DOM and override implicit timeout
+	 */
+	
+	public void waitForElementUndisplayed(WebDriver driver, String locatorType) {
+		WebDriverWait explicitWait = new WebDriverWait(driver, shortTimeout);
+		overrideImplicitTimeout(driver, shortTimeout);
+		explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locatorType)));
+		overrideImplicitTimeout(driver, longTimeout);
+	}
+	
 	public void waitForAllElementsInvisible(WebDriver driver, String locatorType) {
 		WebDriverWait explicitWait = new WebDriverWait(driver, longTimeout);
 		explicitWait.until(ExpectedConditions.invisibilityOfAllElements(getListWebElement(driver, locatorType)));
@@ -500,5 +554,9 @@ public class BasePage {
 		clickToElement(driver, BasePageNopCommerceUI.LOGOUT_LINK_AT_ADMIN);
 		return PageGeneratorManager.getAdminLoginPage(driver);
 	}
+	
+	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
+	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
+
 }
 

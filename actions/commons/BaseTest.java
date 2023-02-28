@@ -123,6 +123,26 @@ public class BaseTest {
 		driver.get(appUrl);
 		return driver;
 }
+	
+	public WebDriver getDriverInstance() {
+		return this.driver;
+	}
+	
+//	protected String getEnvironmentUrl(String serverName) {
+//		String envUrl = null;
+//		EnvironmentList environment = EnvironmentList.valueOf(serverName.toUpperCase());
+//		if (environment == EnvironmentList.DEV) {
+//			envUrl = "https://demo.nopcommerce.com/";
+//		} else if (environment == EnvironmentList.TESTING) {
+//			envUrl = "https://admin-demo.nopcommerce.com/";
+//		} else if (environment == EnvironmentList.STAGING) {
+//			envUrl = "https://staging.orangehrmlive.com/";
+//		} else if (environment == EnvironmentList.PRODUCTION) {
+//			envUrl = "https://production.orangehrmlive.com/";
+//		}
+//		return envUrl;
+//	}
+	
 	protected boolean verifyTrue(boolean condition) {
 		boolean pass = true;
 		try {

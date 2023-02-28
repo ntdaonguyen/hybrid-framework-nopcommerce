@@ -1,7 +1,9 @@
 package commons;
 
+import java.util.List;
+
 public class EnvironmentList {
-	String EnvironmentList[] = {"DEV", "TESTING", "STAGING", "PRODUCTION"};
+	List<String> EnvironmentList = Array.asList("DEV", "TESTING", "STAGING", "PRODUCTION");
 
 	public static EnvironmentList valueOf(String upperCase) {
 		// TODO Auto-generated method stub
